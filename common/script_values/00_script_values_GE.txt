@@ -1,0 +1,157 @@
+﻿GE_auxiliary_numbers_svalue = {
+	value = 0
+	scope:auxiliary_farm = {
+		every_pops_in_province = {
+			limit = {
+				NOT = { pop_culture = country.culture }
+				pop_type = freemen
+			}
+			add = 7
+		}
+		every_pops_in_province = {
+			limit = {
+				NOT = { pop_culture = country.culture }
+				pop_type = freemen
+				pop_happiness >= .75
+			}
+			add = 3
+		}
+		every_pops_in_province = {
+			limit = {
+				NOT = { pop_culture = country.culture }
+				pop_type = freemen
+				pop_happiness <= .50
+			}
+			subtract = 3
+		}
+		every_pops_in_province = {
+			limit = {
+				NOT = { pop_culture = country.culture }
+				pop_type = freemen
+				pop_happiness <= .25
+			}
+			subtract = 3
+		}
+	}
+}
+
+GE_jizja_numbers_svalue = {
+	value = 0
+	scope:jizja_farm = { #Tying it to the event target province
+		every_pops_in_province = { #Checking all the pops
+			limit = {
+				NOT = { pop_religion = country.religion } #count how many pops are not of your religion
+				#pop_type = freemen
+			}
+			add = 10 #i add 10 and have the rewards be divided by 10 so i can use other modifiers to apply a pseudo-happyness effect.
+		every_pops_in_province = {
+			limit = {
+				NOT = { pop_religion = country.religion }
+				#pop_type = freemen
+				pop_happiness >= .75
+			}
+			add = 5
+		}
+		every_pops_in_province = {
+			limit = {
+				NOT = { pop_religion = country.religion }
+				#pop_type = freemen
+				pop_happiness <= .50
+			}
+			subtract = 5
+		}
+		every_pops_in_province = {
+			limit = {
+				NOT = { pop_religion = country.religion }
+				#pop_type = freemen
+				pop_happiness <= .25
+			}
+			subtract = 4
+		}
+		}
+	}
+}
+
+Tribal_Unity = {
+	value = 0
+	every_owned_province = { 
+		every_pops_in_province = {
+			add = 1 
+		}
+		every_pops_in_province = {
+			limit = {
+				pop_type = tribesmen
+				pop_happiness >= .75
+			}
+			subtract = 1
+		}
+	}
+	multiply = 0.1
+}
+
+Tribal_Unity_Tribesmen = {
+	value = 0
+	every_owned_province = { 
+		every_pops_in_province = {
+			limit = {
+				pop_type = tribesmen
+				pop_happiness >= .75
+			}
+			subtract = 1
+		}
+	}
+	multiply = 0.1
+}
+
+Tribal_Unity_Total_Pops = {
+	value = 0
+	every_owned_province = { 
+		every_pops_in_province = {
+			add = 1 
+		}
+	}
+	multiply = 0.1
+}
+Devotion_Unity = {
+	value = 0
+	every_owned_province = { 
+		every_pops_in_province = {
+			add = 1 
+		}
+	}
+	multiply = 0.1
+	every_owned_province = { 
+		limit = {
+			has_building = temple_building
+		}
+		subtract = 10
+	}
+}
+
+Devotion_Temple_Coverage = {
+	value = 0
+	every_owned_province = { 
+		limit = {
+			has_building = temple_building
+		}
+		subtract = 10
+	}
+}
+
+Barony_Coverage = {
+	value = 0
+	every_owned_province = {
+		add = 0.1
+	}
+	min = 0
+	max = 5
+}
+
+Duchy_Coverage = {
+	value = 0
+	every_owned_province = {
+		add = 0.01
+	}
+	min = 0
+	max = 5
+}

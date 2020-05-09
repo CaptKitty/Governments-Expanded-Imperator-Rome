@@ -1,0 +1,22 @@
+GE_slavery_laws = {
+	potential = {
+	}
+	GE_slavery_1 = {
+		global_jaypops_happyness = 1
+	} 
+	GE_slavery_2 = { 
+		enslavement_efficiency = -0.15
+	}
+	GE_slavery_3 = { 
+		global_slaves_happyness = -0.10
+		on_enact = {
+			custom_tooltip = "enables_total_enslavement_tt" #100% Enslavement rate.	
+		}
+	}
+	GE_slavery_4 = { 
+		happiness_for_same_culture_modifier = 0.1
+		on_enact = {
+			custom_tooltip = "enables_total_annihilation_tt" #100% Murder rate.	
+		}
+	}
+}

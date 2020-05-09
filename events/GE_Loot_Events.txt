@@ -1,0 +1,145 @@
+﻿namespace = GE_Loot_Events
+
+GE_Loot_Events.1 = {
+	type = province_event
+	title = "GE_Loot_Events.1.t"
+	desc = "GE_Loot_Events.1.desc"
+	
+	picture = city_construction
+	
+	trigger = {
+		
+	}
+	
+	immediate = {
+		controller = {	
+			capital_scope = {
+				save_scope_as = target
+			}
+		}
+		controller = {
+			every_army = {
+				# set_variable = {
+					# name = Loot_Carried
+					# value = 0
+				# }
+				every_sub_unit = {
+					if = {
+						ROOT = {
+							total_population > 0
+						}
+					}
+					PREV = {
+						ROOT = {
+							random_pops_in_province = {
+								random_list = {
+									50 = { kill_pop = yes }
+									50 = {}
+								}
+							}
+						
+							set_global_variable = {
+								name = Loot_Carried
+								value = 2
+							}
+							change_global_variable = {
+								name = Loot_Carried
+								add = 1
+							}
+							add_treasury = {
+								value = 10
+								add = var:Loot_Carried
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "GE_Loot_Events.1.a"
+		
+		controller = {
+			random_army = {
+				every_sub_unit = {
+					limit = {
+						# PREV = {
+							# var:Loot_Carried > 0
+						# }
+					}
+					PREV = {
+						change_global_variable = {
+							name = Loot_Carried
+							substract = 2
+						}
+					}
+					ROOT = {
+						# controller = {
+							add_treasury = {
+								value = 5
+								add = Loot_Carried
+								add = var:Loot_Carried
+							}
+						# }
+					}
+				}
+				every_sub_unit = {
+					ROOT ={
+						controller = {
+							add_treasury = 1
+						}
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = "GE_Loot_Events.1.b"
+		controller = {
+			random_army = {
+				every_sub_unit = {
+					limit = {
+						PREV = {
+							var:Loot_Carried > 0
+						}
+					}
+				}
+				set_global_variable = {
+					name = Loot_Carried_2
+					value = 1
+				}
+				change_global_variable = {
+					name = Loot_Carried_2
+					add = Loot_Carried
+				}
+				# limit = {
+					# var:Loot_Carried > 0
+				# }
+				ROOT = {
+					controller = {
+						add_treasury = {
+							value = 1
+							add = Loot_Carried_2
+						}
+					}
+				}
+				# change_variable = {
+					# name = Loot_Carried
+					# substract = var:Loot_Carried
+				# }
+				
+				random_sub_unit = {
+					ROOT ={
+						controller = {
+							add_treasury = var:Loot_Carried
+						}
+					}
+				}
+			}
+		}
+	}
+	option = { 
+		name = "GE_Loot_Events.1.c"
+	}
+}

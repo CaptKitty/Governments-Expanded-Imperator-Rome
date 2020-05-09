@@ -1,0 +1,94 @@
+﻿#Republics
+
+aristocratic_republic = { #military party
+	oratory_ideas = 1
+	military_ideas = 2
+	type = republic
+	
+	bonus = {
+		global_freemen_happyness = 0.10
+		character_loyalty = 5
+	}
+	base = {
+		country_civilization_value = 35
+	}
+	
+	minimum_electable_age = 35
+	election_delay = 10
+	ruler_term = 5
+	
+	has_co_ruler = yes
+	
+	color = hsv { 0.6  0.8  0.7 }
+	
+	can_deify_ruler = no
+}
+
+#Monarchies:
+
+despotic_monarchy = { #stepping stone/starting type
+	military_ideas = 1
+	civic_ideas = 1
+	religious_ideas = 1
+	type = monarchy
+	
+	bonus = {
+		global_slaves_output = 0.1
+	}
+	base = {
+		country_civilization_value = 30
+	}
+	
+	election_delay = 0
+	
+	use_regnal_numbers = yes
+	
+	
+	ruler_consort_benefits = yes
+	
+	color = hsv { 0  0.85  0.4 }
+}
+
+
+# Tribal Governments
+
+
+tribal_chiefdom = {
+	military_ideas = 2
+	type = tribal
+	
+	allows_migration = yes
+	
+	bonus = {
+		global_tribesmen_output = 0.15
+	}
+	base = {
+		global_tribesmen_happyness = 0.1
+	}
+
+	election_delay = 0
+	
+	color = hsv { 0.333  0.8  0.2 }
+}
+
+# Feudalism Vassals
+
+noble_barony = {
+	military_ideas = 1
+	civic_ideas = 1
+	type = monarchy
+	
+	
+	bonus = {
+		land_morale_modifier = 0.25
+	}
+	base = {
+		country_civilization_value = 30
+	}
+	
+	bonus_goods_in_capital = yes
+
+	election_delay = 0
+	
+	color = hsv { 0.333  0.8  0.2 }
+}

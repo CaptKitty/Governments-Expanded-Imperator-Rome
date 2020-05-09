@@ -1,0 +1,42 @@
+﻿
+subject_pays_tributary = {
+	scaled_gold = 0.15 #scaled_gold = monthly income, so 15% your monthly income - Used to be 1/5 monthly income, but rounded from 1/(5*12)
+	
+	# gold = 10.0
+	# manpower = 20
+	# scaled_manpower = 0.1
+	
+	# military = 20
+	# civic = 20
+	# oratory = 20
+	# religious = 20
+}
+
+subject_pays_feudatory = {
+	scaled_manpower = 0.15 #15%
+}
+
+subject_pays_vassal = {
+	scaled_manpower = 0.15 #15%
+}
+
+subject_pays_satrapy = {
+	scaled_gold = 0.25 #scaled_gold = monthly income, so 25% of monthly income
+}
+
+subject_client_state_pays = {
+	scaled_gold = 0.25
+}
+
+subject_colony_pays = {
+	scaled_gold = 0.15
+}
+
+subject_merc_city_state = {
+	scaled_gold = 0.1
+}
+
+subject_pays_feudalism = {
+	scaled_manpower = 0.25
+	scaled_gold = 0.25
+}

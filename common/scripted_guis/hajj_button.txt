@@ -1,0 +1,36 @@
+﻿hajj_button = {
+    scope = country
+	saved_scopes = {
+		
+	}
+    is_shown = { # Can be omitted as always true
+    }
+	ai_is_valid = {
+		exists = current_ruler
+		current_ruler = {
+			popularity <= 50
+		}
+	}
+    is_valid = {
+		trigger_if = {
+			limit = {
+				current_ruler = {
+					has_character_modifier = on_hajj_modifier
+				}
+			}
+			current_ruler = {
+				NOT = {
+					has_character_modifier = on_hajj_modifier
+				}
+			}
+		}
+    }
+    effect = {
+		current_ruler = {
+			add_character_modifier = {
+				name = on_hajj_modifier
+				duration = 1825
+			}
+		}
+    }
+}

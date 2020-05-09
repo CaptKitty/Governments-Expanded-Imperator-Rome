@@ -1,0 +1,168 @@
+﻿namespace = GE_Feudal_Vassals
+
+GE_Feudal_Vassals.1 = {
+	type = country_event
+	title = "GE_Feudal_Vassals.1.t"
+	desc = "GE_Feudal_Vassals.1.desc"
+	
+	picture = city_construction
+	
+	trigger = {
+		OR = {
+			AND = {
+				OR = {
+					government = feudal_monarchy 
+					government = tribal_kingdom 
+					government = noble_barony
+				}
+				NOT = {
+					any_subject = {
+						count >= Barony_Coverage
+						is_subject_type = barony
+					}
+				}
+				NOT = {
+					num_of_cities = 1
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		
+	}
+	
+	option = {
+		name = "GE_Feudal_Vassals.1.a"
+		
+		ai_chance = {
+			modifier = {
+				factor = 0
+			}
+		}
+		
+	}
+	option = {
+		name = "GE_Feudal_Vassals.1.b"
+
+		random_neighbour_country = {
+			ROOT = {
+				make_subject = {
+					type = barony
+					target = PREV
+				}
+			}
+		}
+		
+		ai_chance = {
+			modifier = {
+				factor = 0
+			}
+		}
+	}
+	option = {
+		name = "GE_Feudal_Vassals.1.c"
+
+		random_owned_province = {
+			limit = {
+				is_capital = no
+			}
+			save_scope_as = sbgnq1
+		}
+		# scope:target_state = {
+			# custom_tooltip = make_into_subject_state_tt
+		# }
+		#hidden_effect = {
+			scope:sbgnq1 = {
+				create_country = {
+					save_scope_as = sbgnq2
+						create_character = {
+							culture = scope:sbgnq2.culture
+							religion = scope:sbgnq2.religion
+							female = no
+							save_scope_as = sbgnq3
+						}
+					set_as_ruler = scope:sbgnq3
+					change_government = noble_barony
+					root = {
+						make_subject = {
+							target = scope:sbgnq1.owner
+							type = barony
+						}
+					}
+				}
+			}
+			scope:sbgnq1 = {
+				add_province_modifier = {
+					name = big_booty_trades
+					duration = -1
+				}
+			}
+		#}
+		ai_chance = {
+			modifier = {
+				factor = 10
+			}
+		}
+	}
+	option = {
+		name = "GE_Feudal_Vassals.1.d"
+
+		random_owned_province = {
+			limit = {
+				is_capital = no
+			}
+			save_scope_as = sbgnq1
+		}
+		# scope:target_state = {
+			# custom_tooltip = make_into_subject_state_tt
+		# }
+		#hidden_effect = {
+			scope:sbgnq1 = {
+				create_country = {
+					save_scope_as = sbgnq2
+						create_character = {
+							culture = scope:sbgnq2.culture
+							religion = scope:sbgnq2.religion
+							female = no
+							save_scope_as = sbgnq3
+						}
+					set_as_ruler = scope:sbgnq3
+					change_government = noble_barony
+					root = {
+						make_subject = {
+							target = scope:sbgnq1.owner
+							type = barony
+						}
+					}
+				}
+			}
+			scope:sbgnq1 = {
+				add_province_modifier = {
+					name = big_booty_trades
+					duration = -1
+				}
+			}
+			every_owned_province = {
+				limit = {
+					is_neighbor = scope:sbgnq1
+				}
+				set_owned_by = scope:sbgnq2
+			}
+		#}
+		ai_chance = {
+			modifier = {
+				factor = 0
+			}
+			modifier = {
+				factor = 100
+				NOT = {
+					any_subject = {
+						count >= Duchy_Coverage
+						is_subject_type = barony
+					}
+				}
+			}
+		}
+	}
+}

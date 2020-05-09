@@ -1,0 +1,11 @@
+template icon_pop_jaypops
+{
+	texture = "gfx/interface/icons/pop_types/jaypops.dds"
+	size = { 45 45 }
+}
+
+template icon_pop_horde_unity
+{
+	texture = "gfx/interface/icons/horde_unity.dds"
+	size = { 45 45 }
+}

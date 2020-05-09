@@ -1,0 +1,15 @@
+﻿has_law_script_1 = {
+	scope = country
+
+	is_shown = { has_law = GE_slavery_3 }
+}
+has_law_script_2 = {
+	scope = country
+
+	is_shown = { has_law = GE_slavery_4 }
+}
+has_law_script_3 = {
+	scope = country
+
+	is_shown = { NOT = { has_law = GE_slavery_4 } }
+}

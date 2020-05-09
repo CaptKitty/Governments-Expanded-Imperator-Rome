@@ -1,0 +1,786 @@
+namespace = GE_events
+
+GE_events.1 = {
+	type = country_event
+	title = "GE_events.1.t"
+	desc = "GE_events.1.desc"
+	
+	left_portrait = scope:governor_of_province
+	
+	picture = city_construction
+	
+	trigger = {
+		
+	}
+	
+	immediate = {
+		random_owned_province = {
+			limit = {
+				has_potential_auxiliary = yes
+			}
+		}
+	}
+	
+	option = { 
+		name = "GE_events.1.a"
+		every_owned_province = {
+			limit = {
+				has_potential_auxiliary = yes
+			}
+			establish_auxilary_province = yes
+			#add_province_modifier = {
+			#	name = Auxilary_Recruitment_Province
+			#	duration = -1
+			#}
+		}
+	}
+}
+
+GE_events.2 = {
+	type = country_event
+	title = "GE_events.2.t"
+	desc = "GE_events.2.desc"
+	
+	left_portrait = scope:governor_of_province
+	
+	picture = city_construction
+	
+	trigger = {
+		any_owned_province = {
+			has_potential_auxiliary = yes
+		}
+	}
+	
+	immediate = {
+		random_owned_province = {
+			limit = {
+				has_potential_auxiliary = yes
+			}
+			save_scope_as = auxiliary_farm
+		}
+		
+	}
+	
+	option = {
+		name = "GE_events.2.a"
+		scope:auxiliary_farm = {
+			every_pops_in_province = {
+				if = {
+					limit = {
+						NOT = { pop_culture = country.culture }
+						pop_type = freemen
+					}					
+				}
+			}
+			ROOT = {
+				add_treasury = {
+					value = 0
+					add = GE_auxiliary_numbers_svalue
+				}
+			}
+			add_province_modifier_stack = { 
+				MOD = Auxilary_Recruitment_Province 
+				NUM = GE_auxiliary_numbers_svalue 
+				DUR = -1
+			}
+		}
+	}
+}
+
+GE_events.3 = {
+	type = country_event
+	title = "GE_events.3.t"
+	desc = "GE_events.3.desc"
+	
+	left_portrait = scope:governor_of_province
+	
+	picture = city_construction
+	
+	trigger = {
+		has_law = republican_recruitment_5
+		any_owned_province = {
+			has_potential_auxiliary = yes
+		}
+	}
+	
+	immediate = {
+		# every_owned_province = {
+			# limit = {
+				# has_potential_auxiliary = yes
+			# }
+			# trigger_event = {
+				# id = GE_events.4
+				# days = 1
+			# }
+		# }
+	}
+	
+	option = {
+		name = "GE_events.3.a"
+		every_owned_province = {
+			limit = {
+				has_potential_auxiliary = yes
+			}
+			trigger_event = {
+				id = GE_events.4
+				days = 1
+			}
+		}
+	}
+}
+
+
+
+
+GE_events.4 = {
+	type = province_event
+	title = "GE_events.4.t"
+	desc = "GE_events.4.desc"
+	hidden = yes
+	left_portrait = scope:governor_of_province
+	
+	picture = city_construction
+	
+	trigger = {
+		has_potential_auxiliary = yes
+	}
+	
+	immediate = {
+		ROOT = {
+			limit = {
+				has_potential_auxiliary = yes
+			}
+			save_scope_as = auxiliary_farm
+		}
+	}
+	
+	option = {
+		name = "GE_events.4.a"
+		scope:auxiliary_farm = {
+			every_pops_in_province = {
+				if = {
+					limit = {
+						NOT = { pop_culture = country.culture }
+						pop_type = freemen
+					}					
+				}
+			}
+			ROOT = {
+				add_treasury = {
+					value = 0
+					add = GE_auxiliary_numbers_svalue
+				}
+			}
+			add_province_modifier_stack = { 
+				MOD = Auxilary_Recruitment_Province 
+				NUM = GE_auxiliary_numbers_svalue 
+				DUR = -1
+			}
+		}
+	}
+}
+
+GE_events.5 = {
+	type = country_event
+	title = "GE_events.5.t"
+	desc = "GE_events.5.desc"
+	
+	left_portrait = scope:governor_of_province
+	
+	picture = city_construction
+	
+	trigger = {
+		has_law = republican_religious_5
+		any_owned_province = {
+			has_potential_jizja = yes
+		}
+	}
+	
+	immediate = {
+	}
+	
+	option = {
+		name = "GE_events.5.a"
+		every_owned_province = {
+			limit = {
+				has_potential_jizja = yes
+			}
+			trigger_event = {
+				id = GE_events.6
+				days = 1
+			}
+		}
+	}
+}
+
+
+
+
+GE_events.6 = {
+	type = province_event
+	title = "GE_events.6.t"
+	desc = "GE_events.6.desc"
+	hidden = yes
+	left_portrait = scope:governor_of_province
+	
+	picture = city_construction
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_potential_jizja = yes
+	}
+	
+	immediate = {
+		ROOT = {
+			limit = {
+				has_potential_jizja = yes
+			}
+			save_scope_as = jizja_farm
+		}
+	}
+	
+	option = {
+		name = "GE_events.6.a"
+		scope:jizja_farm = {
+			every_pops_in_province = {
+				if = {
+					limit = {
+						NOT = { pop_religion = country.religion }
+						#pop_type = freemen
+					}					
+				}
+			}
+			ROOT = {
+				add_treasury = {
+					value = 0
+					add = GE_jizja_numbers_svalue
+				}
+			}
+			add_province_modifier_stack = { 
+				MOD = Jizja_Tax_Levied 
+				NUM = GE_jizja_numbers_svalue 
+				DUR = -1
+			}
+		}
+	}
+}
+
+GE_events.7 = {
+	type = province_event
+	title = "GE_events.7.t"
+	desc = "GE_events.7.desc"
+	hidden = yes
+	left_portrait = scope:governor_of_province
+	
+	picture = city_construction
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		controller = {
+			has_law = GE_slavery_3
+		}
+	}
+	
+	immediate = {
+		controller = {	
+			capital_scope = {
+				save_scope_as = target
+			}
+		}
+	}
+	
+	option = {
+		name = "GE_events.7.a"
+		every_pops_in_province = {
+			if = {
+				limit = {
+					NOT = { pop_religion = country.religion }
+					#pop_type = freemen
+				}					
+			}	
+			move_pop = scope:target
+			set_pop_type = slaves
+		}
+	}
+}
+
+GE_events.8 = {
+	type = province_event
+	title = "GE_events.8.t"
+	desc = "GE_events.8.desc"
+	hidden = yes
+	left_portrait = scope:governor_of_province
+	
+	picture = city_construction
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		controller = {
+			has_law = GE_slavery_4
+		}
+	}
+	
+	immediate = {
+		controller = {	
+			capital_scope = {
+				save_scope_as = target
+			}
+		}
+	}
+	
+	option = {
+		name = "GE_events.8.a"
+		every_pops_in_province = {
+			kill_pop = yes
+		}
+	}
+}
+
+GE_events.9 = {
+	type = country_event
+	title = "GE_events.9.t"
+	desc = "GE_events.9.desc"
+	hidden = yes
+	picture = city_construction
+
+	trigger = {
+		has_law = GE_slavery_3
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = {
+					has_variable = Horde_Unity
+				}
+			}
+			set_variable = {
+				name = Horde_Unity
+				value = 100
+			}
+		}
+		# ROOT = {
+			# add_treasury = {
+				# value = 0
+				# add = Tribal_Unity #10
+			# }
+		# }
+		change_variable = {
+			name = Horde_Unity
+			subtract = Tribal_Unity
+		}
+		clamp_variable = { 
+			name = Horde_Unity
+			min = 0
+			max = 100 
+		}
+		round_variable = {
+			name = Horde_Unity
+			nearest = 0.01
+		}
+		set_variable = {
+			name = Horde_Unity_Total_Modifier_Throwaway
+			value = 0
+		}
+		change_variable = {
+			name = Horde_Unity_Total_Modifier_Throwaway
+			subtract = Tribal_Unity
+		}
+		round_variable = {
+			name = Horde_Unity_Total_Modifier_Throwaway
+			nearest = 0.1
+		}
+		set_variable = {
+			name = Horde_Unity_Tribesmen_Modifier_Throwaway
+			value = 0
+		}
+		change_variable = {
+			name = Horde_Unity_Tribesmen_Modifier_Throwaway
+			subtract = Tribal_Unity_Tribesmen
+		}
+		round_variable = {
+			name = Horde_Unity_Tribesmen_Modifier_Throwaway
+			nearest = 0.1
+		}
+		set_variable = {
+			name = Horde_Unity_Total_Pops_Modifier_Throwaway
+			value = 0
+		}
+		change_variable = {
+			name = Horde_Unity_Total_Pops_Modifier_Throwaway
+			subtract = Tribal_Unity_Total_Pops
+		}
+		round_variable = {
+			name = Horde_Unity_Total_Pops_Modifier_Throwaway
+			nearest = 0.1
+		}
+		ROOT = {
+			if = {
+				limit = {
+					var:Horde_Unity > 50
+				}
+				change_variable = {
+					name = Horde_Unity
+					subtract = 50
+				}
+				remove_country_modifier = Negative_Horde_Unity_Modifier
+				add_country_modifier_stack = {
+					MOD = Positive_Horde_Unity_Modifier 
+					NUM = var:Horde_Unity 
+					DUR = -1
+				}
+				
+				set_variable = {
+					name = Horde_Unity_Discipline_Throwaway
+					value = -0.5
+				}
+				change_variable = {
+					name = Horde_Unity_Discipline_Throwaway
+					add = var:Horde_Unity
+				}
+				change_variable = {
+					name = Horde_Unity_Discipline_Throwaway
+					multiply = 0.2
+				}
+				round_variable = {
+					name = Horde_Unity_Discipline_Throwaway
+					nearest = 0.1
+				}
+				set_variable = {
+					name = Horde_Unity_Political_Throwaway
+					value = -0.5
+				}
+				change_variable = {
+					name = Horde_Unity_Political_Throwaway
+					add = var:Horde_Unity
+				}
+				change_variable = {
+					name = Horde_Unity_Political_Throwaway
+					multiply = 2
+				}
+				round_variable = {
+					name = Horde_Unity_Political_Throwaway
+					nearest = 0.1
+				}
+				change_variable = {
+					name = Horde_Unity
+					add = 50
+				}
+			}
+			if = {
+				limit = {
+					var:Horde_Unity < 50
+				}
+				set_variable = {
+					name = Negative_Horde_Throwaway
+					value = 50
+				}
+				change_variable = {
+					name = Negative_Horde_Throwaway
+					subtract = var:Horde_Unity
+				}
+				remove_country_modifier = Positive_Horde_Unity_Modifier
+				add_country_modifier_stack = {
+					MOD = Negative_Horde_Unity_Modifier 
+					NUM = var:Negative_Horde_Throwaway
+					DUR = -1
+				}
+				set_variable = {
+					name = Horde_Unity_Discipline_Throwaway
+					value = -0.5
+				}
+				change_variable = {
+					name = Horde_Unity_Discipline_Throwaway
+					add = var:Negative_Horde_Throwaway
+				}
+				change_variable = {
+					name = Horde_Unity_Discipline_Throwaway
+					multiply = -0.2
+				}
+				round_variable = {
+					name = Horde_Unity_Discipline_Throwaway
+					nearest = 0.1
+				}
+				set_variable = {
+					name = Horde_Unity_Political_Throwaway
+					value = -0.5
+				}
+				change_variable = {
+					name = Horde_Unity_Political_Throwaway
+					add = var:Negative_Horde_Throwaway
+				}
+				change_variable = {
+					name = Horde_Unity_Political_Throwaway
+					multiply = -2
+				}
+				round_variable = {
+					name = Horde_Unity_Political_Throwaway
+					nearest = 0.1
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "GE_events.9.a"
+		
+		
+	}
+}
+
+GE_events.10 = {
+	type = province_event
+	title = "GE_events.10.t"
+	desc = "GE_events.10.desc"
+	hidden = yes
+	left_portrait = scope:governor_of_province
+	
+	picture = city_construction
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		controller = {
+			has_law = GE_slavery_3
+		}
+	}
+	
+	immediate = {
+	}
+	
+	option = {
+		name = "GE_events.10.a"
+		controller = {
+			change_variable = {
+				name = Horde_Unity
+				add = 2
+			}
+		}
+	}
+}
+
+GE_events.11 = {
+	type = country_event
+	title = "GE_events.11.t"
+	desc = "GE_events.11.desc"
+	hidden = yes
+	picture = city_construction
+
+	trigger = {
+		has_law = GE_slavery_4
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = {
+					has_variable = Devotion
+				}
+			}
+			set_variable = {
+				name = Devotion
+				value = 100
+			}
+		}
+		# ROOT = {
+			# add_treasury = {
+				# value = 0
+				# add = Tribal_Unity #10
+			# }
+		# }
+		change_variable = {
+			name = Devotion
+			subtract = Devotion_Unity
+		}
+		clamp_variable = { 
+			name = Devotion
+			min = 0
+			max = 100 
+		}
+		round_variable = {
+			name = Devotion
+			nearest = 0.01
+		}
+		set_variable = {
+			name = Devotion_Total_Modifier_Throwaway
+			value = 0
+		}
+		change_variable = {
+			name = Devotion_Total_Modifier_Throwaway
+			subtract = Devotion_Unity
+		}
+		round_variable = {
+			name = Devotion_Total_Modifier_Throwaway
+			nearest = 0.1
+		}
+		set_variable = {
+			name = Devotion_Tribesmen_Modifier_Throwaway
+			value = 0
+		}
+		change_variable = {
+			name = Devotion_Tribesmen_Modifier_Throwaway
+			subtract = Devotion_Temple_Coverage
+		}
+		round_variable = {
+			name = Devotion_Tribesmen_Modifier_Throwaway
+			nearest = 0.1
+		}
+		set_variable = {
+			name = Devotion_Total_Pops_Modifier_Throwaway
+			value = 0
+		}
+		change_variable = {
+			name = Devotion_Total_Pops_Modifier_Throwaway
+			subtract = Tribal_Unity_Total_Pops
+		}
+		round_variable = {
+			name = Devotion_Total_Pops_Modifier_Throwaway
+			nearest = 0.1
+		}
+		ROOT = {
+			if = {
+				limit = {
+					var:Devotion > 50
+				}
+				change_variable = {
+					name = Devotion
+					subtract = 50
+				}
+				remove_country_modifier = Negative_Devotion_Modifier
+				add_country_modifier_stack = {
+					MOD = Positive_Devotion_Modifier 
+					NUM = var:Devotion 
+					DUR = -1
+				}
+				
+				set_variable = {
+					name = Devotion_Discipline_Throwaway
+					value = -0.5
+				}
+				change_variable = {
+					name = Devotion_Discipline_Throwaway
+					add = var:Devotion
+				}
+				change_variable = {
+					name = Devotion_Discipline_Throwaway
+					multiply = 0.2
+				}
+				round_variable = {
+					name = Devotion_Discipline_Throwaway
+					nearest = 0.1
+				}
+				set_variable = {
+					name = Devotion_Political_Throwaway
+					value = -0.5
+				}
+				change_variable = {
+					name = Devotion_Political_Throwaway
+					add = var:Devotion
+				}
+				change_variable = {
+					name = Devotion_Political_Throwaway
+					multiply = 0.5
+				}
+				round_variable = {
+					name = Devotion_Political_Throwaway
+					nearest = 0.1
+				}
+				change_variable = {
+					name = Devotion
+					add = 50
+				}
+			}
+			if = {
+				limit = {
+					var:Devotion < 50
+				}
+				set_variable = {
+					name = Negative_Devotion_Throwaway
+					value = 50
+				}
+				change_variable = {
+					name = Negative_Devotion_Throwaway
+					subtract = var:Devotion
+				}
+				remove_country_modifier = Positive_Devotion_Modifier
+				add_country_modifier_stack = {
+					MOD = Negative_Devotion_Modifier 
+					NUM = var:Negative_Devotion_Throwaway
+					DUR = -1
+				}
+				set_variable = {
+					name = Devotion_Discipline_Throwaway
+					value = -0.5
+				}
+				change_variable = {
+					name = Devotion_Discipline_Throwaway
+					add = var:Negative_Devotion_Throwaway
+				}
+				change_variable = {
+					name = Devotion_Discipline_Throwaway
+					multiply = -0.2
+				}
+				round_variable = {
+					name = Devotion_Discipline_Throwaway
+					nearest = 0.1
+				}
+				set_variable = {
+					name = Devotion_Political_Throwaway
+					value = -0.5
+				}
+				change_variable = {
+					name = Devotion_Political_Throwaway
+					add = var:Negative_Devotion_Throwaway
+				}
+				change_variable = {
+					name = Devotion_Political_Throwaway
+					multiply = -0.5
+				}
+				round_variable = {
+					name = Devotion_Political_Throwaway
+					nearest = 0.1
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "GE_events.11.a"
+		
+		
+	}
+}
+
+GE_events.12 = {
+	type = province_event
+	title = "GE_events.12.t"
+	desc = "GE_events.12.desc"
+	hidden = yes
+	left_portrait = scope:governor_of_province
+	
+	picture = city_construction
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		controller = {
+			has_law = GE_slavery_4
+		}
+	}
+	
+	immediate = {
+	}
+	
+	option = {
+		name = "GE_events.12.a"
+		controller = {
+			change_variable = {
+				name = Horde_Unity
+				add = 2
+			}
+		}
+	}
+}

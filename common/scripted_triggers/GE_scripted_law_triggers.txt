@@ -1,0 +1,25 @@
+﻿has_potential_auxiliary = {
+	# controller = root
+	any_pops_in_province = {
+		count >= 1
+		NOT = {
+			pop_culture = country.culture
+		}
+		pop_type = freemen
+	}
+	#NOT = {
+	#	has_province_modifier = Auxilary_Recruitment_Province
+	#}
+
+}
+
+has_potential_jizja = {
+	any_pops_in_province = {
+		count >= 1
+		NOT = {
+			pop_religion = country.religion
+		}
+		#pop_type = slaves
+	}
+
+}

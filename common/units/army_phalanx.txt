@@ -1,0 +1,47 @@
+phalanx_infantry = {
+    army = yes
+    assault = yes
+
+    allow = {
+        owner = { 
+			country_culture_group = hellenic
+		}
+    }
+
+    maneuver = 0
+    movement_speed = 2.0 #2.5
+
+    build_time = 60
+
+    archers = 0.8 #1.0
+    slingers = 0.8 #added
+
+    light_infantry = 1.3 #1.2hi
+    heavy_infantry = 1.0
+    phalanx_infantry = 0.95 #added
+
+    light_cavalry = 1.1 #0.9hi
+    heavy_cavalry = 1.2
+    horse_archers = 0.5 #0.75hi
+
+    chariots = 1.25
+    camels = 1.1 #0.9
+
+    warelephant = 1.0
+    supply_train = 2.0
+
+    attrition_weight = 1.5
+    attrition_loss = 0.05
+
+    food_consumption = 0.20
+    food_storage = 2.4
+
+    morale_damage_taken = 0.9
+
+	loot_capacity = 10
+	
+    build_cost = {
+        gold = 14
+        manpower = 1000
+    }
+}

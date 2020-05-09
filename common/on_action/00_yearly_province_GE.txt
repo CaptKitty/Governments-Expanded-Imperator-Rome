@@ -1,0 +1,28 @@
+﻿yearly_country_pulse = {
+    events = {
+		GE_events.3	
+		GE_events.5
+	}
+}
+on_province_occupied = {
+	events = {
+		GE_events.7
+		GE_events.8
+		GE_events.10
+	}
+}
+monthly_country_pulse = {
+	events = {
+		GE_events.9
+		GE_events.11
+		GE_Feudal_Vassals.1
+    }
+}
+
+on_game_initialized = {
+	events = {
+		GE_Feudal_Vassals.1
+		GE_events.9
+		GE_events.11
+	}
+}

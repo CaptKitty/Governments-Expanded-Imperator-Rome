@@ -1,0 +1,618 @@
+container = {
+  name = "Pops"
+  position = { 165 124 }
+
+  widget = {
+    size = { 162 40 }
+
+    DefaultHeaderBackground = {
+      position = { -4 0 }
+      size = { 162 46 }
+
+      blockoverride "text"
+      {
+        text = "POPS_TITLE_PWINDOW"
+        margin_left = 0
+      }
+
+      blockoverride "position"
+      {
+        position = { 10 7 }
+      }
+
+      textbox = {
+        position = { -10 11 }
+        parentanchor = top|right
+        widgetanchor = top|right
+        autoresize = yes
+        align = top|right
+        using = BlackMarbleFont
+        text = "[ProvinceWindow.GetProvince.GetPopulation('total')]/[ProvinceWindow.GetProvince.GetPopulationCapacityValue]"
+        tooltip = "[ProvinceWindow.GetProvince.GetPopulationCapacityInfo]"
+      }
+    }
+  }
+
+  icon = {
+    name = "progressbar_frame"
+    position = { 142 48 }
+    spriteType = Corneredtiled
+    spriteborder = { 2 5 }
+    size = { 11 202 }
+    texture = "gfx/interface/tiles/progressbar_green_frame.dds"
+
+    progressbar = {
+      using = progressbar_green_vertical
+      position = { 2 2 }
+      size = { 7 198 }
+      visible = "[ProvinceWindow.GetProvince.IsPopGrowing('citizen')]"
+      tooltip = "[ProvinceWindow.GetProvince.GetGrowthInformation]"
+      value = "[FixedPointToFloat(ProvinceWindow.GetProvince.GetCurrentPopGrowthStatus)]"
+    }
+
+    progressbar = {
+      using = progressbar_red_vertical
+      position = { 2 2 }
+      size = { 7 198 }
+      visible = "[ProvinceWindow.GetProvince.IsPopDeclining('citizen')]"
+      tooltip = "[ProvinceWindow.GetProvince.GetGrowthInformation]"
+      value = "[FixedPointToFloat(ProvinceWindow.GetProvince.GetCurrentPopGrowthStatus)]"
+    }
+
+    progressbar = {
+      using = progressbar_green_vertical
+      position = { 2 2 }
+      size = { 7 198 }
+      visible = "[ProvinceWindow.GetProvince.IsPopGrowing('freemen')]"
+      tooltip = "[ProvinceWindow.GetProvince.GetGrowthInformation]"
+      value = "[FixedPointToFloat(ProvinceWindow.GetProvince.GetCurrentPopGrowthStatus)]"
+    }
+
+    progressbar = {
+      using = progressbar_red_vertical
+      position = { 2 2 }
+      size = { 7 198 }
+      visible = "[ProvinceWindow.GetProvince.IsPopDeclining('freemen')]"
+      tooltip = "[ProvinceWindow.GetProvince.GetGrowthInformation]"
+      value = "[FixedPointToFloat(ProvinceWindow.GetProvince.GetCurrentPopGrowthStatus)]"
+    }
+
+    progressbar = {
+      using = progressbar_green_vertical
+      position = { 2 2 }
+      size = { 7 198 }
+      visible = "[ProvinceWindow.GetProvince.IsPopGrowing('tribesmen')]"
+      tooltip = "[ProvinceWindow.GetProvince.GetGrowthInformation]"
+      value = "[FixedPointToFloat(ProvinceWindow.GetProvince.GetCurrentPopGrowthStatus)]"
+    }
+
+    progressbar = {
+      using = progressbar_red_vertical
+      position = { 2 2 }
+      size = { 7 198 }
+      visible = "[ProvinceWindow.GetProvince.IsPopDeclining('tribesmen')]"
+      tooltip = "[ProvinceWindow.GetProvince.GetGrowthInformation]"
+      value = "[FixedPointToFloat(ProvinceWindow.GetProvince.GetCurrentPopGrowthStatus)]"
+    }
+
+    progressbar = {
+      using = progressbar_green_vertical
+      position = { 2 2 }
+      size = { 7 198 }
+      visible = "[ProvinceWindow.GetProvince.IsPopGrowing('slaves')]"
+      tooltip = "[ProvinceWindow.GetProvince.GetGrowthInformation]"
+      value = "[FixedPointToFloat(ProvinceWindow.GetProvince.GetCurrentPopGrowthStatus)]"
+    }
+
+    progressbar = {
+      using = progressbar_red_vertical
+      position = { 2 2 }
+      size = { 7 198 }
+      visible = "[ProvinceWindow.GetProvince.IsPopDeclining('slaves')]"
+      tooltip = "[ProvinceWindow.GetProvince.GetGrowthInformation]"
+      value = "[FixedPointToFloat(ProvinceWindow.GetProvince.GetCurrentPopGrowthStatus)]"
+    }
+  }
+
+  scrollarea = {
+    position = { 0 48 } #0-48
+    size = { 145 205 } #145-205
+    scrollbarpolicy_horizontal = always_off
+
+    scrollbar_vertical = {
+      using = MarbleScrollBar
+    }
+
+    scrollwidget = {
+      flowcontainer = {
+        position = { 0 0 }
+        direction = vertical
+        spacing = 8
+
+        container = {
+          name = "Jaypops"
+
+          #alpha = "[TransparentIfZero_int32(ProvinceWindow.GetProvince.GetPopulation('jaypops'))]"
+
+          icon = {
+            name = "Pop Number"
+            position = { 48 0 }
+            texture = "gfx/interface/tiles/list_slot_corner_tiles.dds"
+            spriteType = Corneredtiled
+            spriteborder = { 12 12 }
+            size = { 42 42 }
+
+            textbox = {
+              position = { 0 6 }
+              autoresize = yes
+              using = MarbleButtonFont
+              text = "[ProvinceWindow.GetProvince.GetPopulation('jaypops')]"
+              widgetanchor = top|hcenter
+              parentanchor = top|hcenter
+            }
+            tooltip = "[ProvinceWindow.GetProvince.GetPopulationTooltip('jaypops')]"
+          }
+
+          icon = {
+            position = { 94 0 }
+            texture = "gfx/interface/tiles/list_slot_corner_tiles.dds"
+            spriteType = Corneredtiled
+            spriteborder = { 12 12 }
+            size = { 42 42 }
+
+            icon = {
+              framesize = { 50 50 }
+              size = { 40 40 }
+              widgetanchor = vcenter|hcenter
+              parentanchor = vcenter|hcenter
+              visible = "[ProvinceWindow.GetProvince.HasPopulation('jaypops')]"
+              texture = "gfx/interface/icons/shared_icons/pop_happy.dds"
+              frame = "[ProvinceWindow.GetProvince.GetPopHappyFrame('jaypops')]"
+              tooltip = "[ProvinceWindow.GetProvince.GetPopHappyInformation('jaypops')]"
+            }
+          }
+
+          button = {
+            using = button_nohighlight
+            position = { 0 -1 }
+            size = { 45 45 }
+            texture = "gfx/interface/buttons/button_square_42.dds"
+            parentanchor = top|left
+            #clicksound = "event:/SFX/UI/Generic/sfx_ui_generic_sub_tab"
+            #oversound = "event:/SFX/UI/Generic/sfx_ui_generic_mouse_over"
+            #onclick = "[ProvinceWindow.ShowPopDetails('jaypops')]"
+            tooltip = "CITIZEN_TOOLTIP_SIMPLIFIED"
+
+            icon = {
+              position = { -1 -1 }
+              widgetanchor = vcenter|hcenter
+              parentanchor = vcenter|hcenter
+              size = { 40 40 }
+              using = icon_pop_citizens
+            }
+
+            state = {
+              name = _mouse_enter
+              on_start = "[PdxGuiTriggerAllAnimations('research_show')]"
+              on_start = "[PdxGuiTriggerAllAnimations('commerce_show')]"
+			  on_start = "[PdxGuiTriggerAllAnimations('manpower_show')]"
+              on_start = "[PdxGuiTriggerAllAnimations('tax_show')]"
+            }
+            state = {
+              name = _mouse_hierarchy_leave
+              on_start = "[PdxGuiInterruptAllAnimations('research_show')]"
+              on_start = "[PdxGuiInterruptAllAnimations('commerce_show')]"
+			  on_start = "[PdxGuiInterruptAllAnimations('manpower_show')]"
+			  on_start = "[PdxGuiInterruptAllAnimations('tax_show')]"
+              on_start = "[PdxGuiTriggerAllAnimations('manpower_hide')]"
+              on_start = "[PdxGuiTriggerAllAnimations('tax_hide')]"
+              on_start = "[PdxGuiTriggerAllAnimations('research_hide')]"
+              on_start = "[PdxGuiTriggerAllAnimations('commerce_hide')]"
+            }
+          }
+
+
+          icon = {
+            visible = "[ProvinceWindow.GetProvince.IsPopGrowing('jaypops')]"
+            #tooltip = "[ProvinceWindow.GetProvince.GetGrowthInformation]"
+            using = icon_plus
+            position = { -2 0 }
+          }
+
+          icon = {
+            visible = "[ProvinceWindow.GetProvince.IsPopDeclining('jaypops')]"
+            using = icon_minus
+            position = { -2 0 }
+          }
+        }
+		
+		container = {
+          name = "Citizens"
+
+          #alpha = "[TransparentIfZero_int32(ProvinceWindow.GetProvince.GetPopulation('citizen'))]"
+
+          icon = {
+            name = "Pop Number"
+            position = { 48 0 }
+            texture = "gfx/interface/tiles/list_slot_corner_tiles.dds"
+            spriteType = Corneredtiled
+            spriteborder = { 12 12 }
+            size = { 42 42 }
+
+            textbox = {
+              position = { 0 6 }
+              autoresize = yes
+              using = MarbleButtonFont
+              text = "[ProvinceWindow.GetProvince.GetPopulation('citizen')]"
+              widgetanchor = top|hcenter
+              parentanchor = top|hcenter
+            }
+            tooltip = "[ProvinceWindow.GetProvince.GetPopulationTooltip('citizen')]"
+          }
+
+          icon = {
+            position = { 94 0 }
+            texture = "gfx/interface/tiles/list_slot_corner_tiles.dds"
+            spriteType = Corneredtiled
+            spriteborder = { 12 12 }
+            size = { 42 42 }
+
+            icon = {
+              framesize = { 50 50 }
+              size = { 40 40 }
+              widgetanchor = vcenter|hcenter
+              parentanchor = vcenter|hcenter
+              visible = "[ProvinceWindow.GetProvince.HasPopulation('citizen')]"
+              texture = "gfx/interface/icons/shared_icons/pop_happy.dds"
+              frame = "[ProvinceWindow.GetProvince.GetPopHappyFrame('citizen')]"
+              tooltip = "[ProvinceWindow.GetProvince.GetPopHappyInformation('citizen')]"
+            }
+          }
+
+          button = {
+            using = button_nohighlight
+            position = { 0 -1 }
+            size = { 45 45 }
+            texture = "gfx/interface/buttons/button_square_42.dds"
+            parentanchor = top|left
+            #clicksound = "event:/SFX/UI/Generic/sfx_ui_generic_sub_tab"
+            #oversound = "event:/SFX/UI/Generic/sfx_ui_generic_mouse_over"
+            #onclick = "[ProvinceWindow.ShowPopDetails('citizen')]"
+            tooltip = "CITIZEN_TOOLTIP_SIMPLIFIED"
+
+            icon = {
+              position = { -1 -1 }
+              widgetanchor = vcenter|hcenter
+              parentanchor = vcenter|hcenter
+              size = { 40 40 }
+              using = icon_pop_citizens
+            }
+
+            state = {
+              name = _mouse_enter
+              on_start = "[PdxGuiTriggerAllAnimations('research_show')]"
+              on_start = "[PdxGuiTriggerAllAnimations('commerce_show')]"
+			  on_start = "[PdxGuiTriggerAllAnimations('tax_show')]"
+            }
+            state = {
+              name = _mouse_hierarchy_leave
+              on_start = "[PdxGuiInterruptAllAnimations('research_show')]"
+              on_start = "[PdxGuiInterruptAllAnimations('commerce_show')]"
+			  on_start = "[PdxGuiInterruptAllAnimations('tax_show')]"
+              on_start = "[PdxGuiTriggerAllAnimations('research_hide')]"
+              on_start = "[PdxGuiTriggerAllAnimations('commerce_hide')]"
+			  on_start = "[PdxGuiTriggerAllAnimations('tax_hide')]"
+            }
+          }
+
+
+
+          icon = {
+            visible = "[ProvinceWindow.GetProvince.IsPopGrowing('citizen')]"
+            #tooltip = "[ProvinceWindow.GetProvince.GetGrowthInformation]"
+            using = icon_plus
+            position = { -2 0 }
+          }
+
+          icon = {
+            visible = "[ProvinceWindow.GetProvince.IsPopDeclining('citizen')]"
+            using = icon_minus
+            position = { -2 0 }
+          }
+        }
+
+        container = {
+          name = "Freemen"
+
+          #alpha = "[TransparentIfZero_int32(ProvinceWindow.GetProvince.GetPopulation('freemen'))]"
+
+          icon = {
+            name = "Pop Number"
+            position = { 48 0 }
+            texture = "gfx/interface/tiles/list_slot_corner_tiles.dds"
+            spriteType = Corneredtiled
+            spriteborder = { 12 12 }
+            size = { 42 42 }
+
+            textbox = {
+              position = { 0 6 }
+              autoresize = yes
+              using = MarbleButtonFont
+              text = "[ProvinceWindow.GetProvince.GetPopulation('freemen')]"
+              widgetanchor = top|hcenter
+              parentanchor = top|hcenter
+            }
+            tooltip = "[ProvinceWindow.GetProvince.GetPopulationTooltip('freemen')]"
+          }
+
+          icon = {
+            position = { 94 0 }
+            texture = "gfx/interface/tiles/list_slot_corner_tiles.dds"
+            spriteType = Corneredtiled
+            spriteborder = { 12 12 }
+            size = { 42 42 }
+
+            icon = {
+              framesize = { 50 50 }
+              size = { 40 40 }
+              widgetanchor = vcenter|hcenter
+              parentanchor = vcenter|hcenter
+              visible = "[ProvinceWindow.GetProvince.HasPopulation('freemen')]"
+              texture = "gfx/interface/icons/shared_icons/pop_happy.dds"
+              frame = "[ProvinceWindow.GetProvince.GetPopHappyFrame('freemen')]"
+              tooltip = "[ProvinceWindow.GetProvince.GetPopHappyInformation('freemen')]"
+            }
+          }
+
+
+          button = {
+            using = button_nohighlight
+            position = { 0 -1 }
+            size = { 45 45 }
+            texture = "gfx/interface/buttons/button_square_42.dds"
+            parentanchor = top|left
+            #clicksound = "event:/SFX/UI/Generic/sfx_ui_generic_sub_tab"
+            #oversound = "event:/SFX/UI/Generic/sfx_ui_generic_mouse_over"
+            #onclick = "[ProvinceWindow.ShowPopDetails('freemen')]"
+            tooltip = "FREEMEN_TOOLTIP_SIMPLIFIED"
+
+            icon = {
+              widgetanchor = vcenter|hcenter
+              parentanchor = vcenter|hcenter
+              size = { 42 42 }
+              using = icon_pop_freemen
+            }
+
+
+            state = {
+              name = _mouse_enter
+
+              on_start = "[PdxGuiTriggerAllAnimations('manpower_show')]"
+              on_start = "[PdxGuiTriggerAllAnimations('tax_show')]"
+            }
+
+            state = {
+              name = _mouse_hierarchy_leave
+
+              on_start = "[PdxGuiInterruptAllAnimations('manpower_show')]"
+              on_start = "[PdxGuiTriggerAllAnimations('manpower_hide')]"
+              on_start = "[PdxGuiInterruptAllAnimations('tax_show')]"
+              on_start = "[PdxGuiTriggerAllAnimations('tax_hide')]"
+            }
+
+          }
+
+
+          icon = {
+            visible = "[ProvinceWindow.GetProvince.IsPopGrowing('freemen')]"
+            using = icon_plus
+            position = { -2 0 }
+          }
+
+          icon = {
+            visible = "[ProvinceWindow.GetProvince.IsPopDeclining('freemen')]"
+            #tooltip = "[ProvinceWindow.GetProvince.GetGrowthInformation]"
+            using = icon_minus
+            position = { -2 0 }
+          }
+        }
+
+        container = {
+          name = "Tribal"
+
+          #alpha = "[TransparentIfZero_int32(ProvinceWindow.GetProvince.GetPopulation('tribesmen'))]"
+
+          icon = {
+            name = "Pop Number"
+            position = { 48 0 }
+            texture = "gfx/interface/tiles/list_slot_corner_tiles.dds"
+            spriteType = Corneredtiled
+            spriteborder = { 12 12 }
+            size = { 42 42 }
+
+            textbox = {
+              position = { 0 6 }
+              autoresize = yes
+              using = MarbleButtonFont
+              text = "[ProvinceWindow.GetProvince.GetPopulation('tribesmen')]"
+              widgetanchor = top|hcenter
+              parentanchor = top|hcenter
+            }
+            tooltip = "[ProvinceWindow.GetProvince.GetPopulationTooltip('tribesmen')]"
+          }
+
+          icon = {
+            position = { 94 0 }
+            texture = "gfx/interface/tiles/list_slot_corner_tiles.dds"
+            spriteType = Corneredtiled
+            spriteborder = { 12 12 }
+            size = { 42 42 }
+
+            icon = {
+              framesize = { 50 50 }
+              size = { 40 40 }
+              widgetanchor = vcenter|hcenter
+              parentanchor = vcenter|hcenter
+              visible = "[ProvinceWindow.GetProvince.HasPopulation('tribesmen')]"
+              texture = "gfx/interface/icons/shared_icons/pop_happy.dds"
+              frame = "[ProvinceWindow.GetProvince.GetPopHappyFrame('tribesmen')]"
+              tooltip = "[ProvinceWindow.GetProvince.GetPopHappyInformation('tribesmen')]"
+            }
+          }
+
+          button = {
+            using = button_nohighlight
+            position = { 0 -1 }
+            size = { 45 45 }
+            texture = "gfx/interface/buttons/button_square_42.dds"
+            parentanchor = top|left
+            #clicksound = "event:/SFX/UI/Generic/sfx_ui_generic_sub_tab"
+            #oversound = "event:/SFX/UI/Generic/sfx_ui_generic_mouse_over"
+            #onclick = "[ProvinceWindow.ShowPopDetails('tribesmen')]"
+            tooltip = "TRIBESMEN_TOOLTIP_SIMPLIFIED"
+
+            icon = {
+              widgetanchor = vcenter|hcenter
+              parentanchor = vcenter|hcenter
+              size = { 42 42 }
+              using = icon_pop_tribal
+            }
+
+            state = {
+              name = _mouse_enter
+              on_start = "[PdxGuiTriggerAllAnimations('manpower_show')]"
+              on_start = "[PdxGuiTriggerAllAnimations('tax_show')]"
+            }
+
+            state = {
+              name = _mouse_hierarchy_leave
+              on_start = "[PdxGuiInterruptAllAnimations('manpower_show')]"
+              on_start = "[PdxGuiInterruptAllAnimations('tax_show')]"
+              on_start = "[PdxGuiTriggerAllAnimations('manpower_hide')]"
+              on_start = "[PdxGuiTriggerAllAnimations('tax_hide')]"
+            }
+
+          }
+
+          icon = {
+            visible = "[ProvinceWindow.GetProvince.IsPopGrowing('tribesmen')]"
+            using = icon_plus
+            position = { -2 0 }
+          }
+
+          icon = {
+            visible = "[ProvinceWindow.GetProvince.IsPopDeclining('tribesmen')]"
+            #tooltip = "[ProvinceWindow.GetProvince.GetGrowthInformation]"
+            using = icon_minus
+            position = { -2 0 }
+          }
+        }
+
+        container = {
+          #alpha = "[TransparentIfZero_int32(ProvinceWindow.GetProvince.GetPopulation('slaves'))]"
+          name = "Slaves"
+
+
+          icon = {
+            name = "Pop Number"
+            position = { 48 0 }
+            texture = "gfx/interface/tiles/list_slot_corner_tiles.dds"
+            spriteType = Corneredtiled
+            spriteborder = { 12 12 }
+            size = { 42 42 }
+
+            textbox = {
+              position = { 0 6 }
+              autoresize = yes
+              using = MarbleButtonFont
+              text = "[ProvinceWindow.GetProvince.GetPopulation('slaves')]"
+              widgetanchor = top|hcenter
+              parentanchor = top|hcenter
+            }
+            tooltip = "[ProvinceWindow.GetProvince.GetPopulationTooltip('slaves')]"
+          }
+
+          icon = {
+            position = { 94 0 }
+            texture = "gfx/interface/tiles/list_slot_corner_tiles.dds"
+            spriteType = Corneredtiled
+            spriteborder = { 12 12 }
+            size = { 42 42 }
+
+            icon = {
+              framesize = { 50 50 }
+              size = { 40 40 }
+              widgetanchor = vcenter|hcenter
+              parentanchor = vcenter|hcenter
+              visible = "[ProvinceWindow.GetProvince.HasPopulation('slaves')]"
+              texture = "gfx/interface/icons/shared_icons/pop_happy.dds"
+              frame = "[ProvinceWindow.GetProvince.GetPopHappyFrame('slaves')]"
+              tooltip = "[ProvinceWindow.GetProvince.GetPopHappyInformation('slaves')]"
+            }
+          }
+
+          button	= {
+            using = button_nohighlight
+            position = { 0 -1 }
+            size = { 45 45 }
+            texture = "gfx/interface/buttons/button_square_42.dds"
+            parentanchor = top|left
+            #clicksound = "event:/SFX/UI/Generic/sfx_ui_generic_sub_tab"
+            #oversound = "event:/SFX/UI/Generic/sfx_ui_generic_mouse_over"
+            #onclick = "[ProvinceWindow.ShowPopDetails('slaves')]"
+            tooltip = "SLAVES_TOOLTIP_SIMPLIFIED"
+
+            icon = {
+              size = { 38 38 }
+              using = icon_pop_slaves
+              parentanchor = center
+            }
+
+            state = {
+              name = _mouse_enter
+
+              on_start = "[PdxGuiTriggerAllAnimations('tax_show')]"
+              on_start = "[PdxGuiTriggerAllAnimations('tradegood_show')]"
+            }
+
+            state = {
+              name = _mouse_hierarchy_leave
+
+              on_start = "[PdxGuiInterruptAllAnimations('tax_show')]"
+              on_start = "[PdxGuiInterruptAllAnimations('tradegood_show')]"
+              on_start = "[PdxGuiTriggerAllAnimations('tax_hide')]"
+              on_start = "[PdxGuiTriggerAllAnimations('tradegood_hide')]"
+            }
+
+          }
+
+
+          icon = {
+            visible = "[ProvinceWindow.GetProvince.IsPopGrowing('slaves')]"
+            #tooltip = "[ProvinceWindow.GetProvince.GetGrowthInformation]"
+            using = icon_plus
+            position = { -2 0 }
+          }
+
+          icon = {
+            visible = "[ProvinceWindow.GetProvince.IsPopDeclining('slaves')]"
+            #tooltip = "[ProvinceWindow.GetProvince.GetGrowthInformation]"
+            using = icon_minus
+            position = { -2 0 }
+          }
+        }
+
+      }
+    }
+  }
+
+  button_standard_white_marble_s = {
+    text = "POP_SCREEN"
+    tooltip = "OPEN_POPS_VIEW_TT"
+    onclick = "[ProvinceWindow.ShowPopDetails('slaves')]"
+    clicksound = "event:/SFX/UI/Generic/sfx_ui_generic_sub_tab"
+    oversound = "event:/SFX/UI/Generic/sfx_ui_generic_mouse_over"
+    size = { 156 38 }
+    position = { -1 253 }
+  }
+}

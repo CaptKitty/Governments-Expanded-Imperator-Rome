@@ -1,0 +1,52 @@
+﻿l_english:
+ Auxilary_Recruitment_Province:0 "Auxilary Recruitment"
+ GE_events.3.t:0 "Yearly Auxiliary Lists"
+ GE_events.3.desc:0 "Its time to update the lists of potential auxiliaries for our military."
+ GE_events.3.a:0 "Send out the scribes!" 
+ republican_recruitment_5:0 "Auxiliary Recruitment"
+ republican_recruitment_5_desc:0 "The granting of citizenship to our veterans is an excellent way of guarenteeing a large flow of recruits to the training fields, especially the ones not yet properly integrated into our society."
+ republican_religious_5:0 "Tolerant Taxation"
+ republican_religious_5_desc:0 "By guarenteeing the religious freedom of our heathen inhabitants in return for a minor tax increase we can both promote the spread of our gods, and at the same time fill our coffers, although there might be some unrest among the population."
+ enables_auxilary_recruitment_tt:0 "Gain up to #G +50%#! more manpower from non-native Freemen, depending on their loyalty."
+ enables_jizja_taxation_tt:0 "Tax Heathens at #G 0.01#! Tax income per population to tolerate their freedom of faith."
+ GE_slavery_laws:0 "Rules of Conquest"
+ GE_slavery_1:0 "Traditional Conquest"
+ GE_slavery_1_desc:0 "We abide by the traditional rules of conquest."
+ GE_slavery_2:0 "Pacifism is Life"
+ GE_slavery_2_desc:0 "Let us leave the local populace in peace whenever possible."
+ GE_slavery_3:0 "Total Enslavement"
+ GE_slavery_3_desc:0 "Crush your enemies, drive them before you and hear the lamentations of their women."
+ enables_total_enslavement_tt:0 "When conquering a province, enslave every last pop and send them to your capital in chains."
+ GE_slavery_4:0 "Total Annihilation"
+ GE_slavery_5_desc:0 "Crush your enemies, drive them before you and hear the lamentations of their women."
+ enables_total_annihilation_tt:0 "When conquering a province, enslave every last pop and send them to your capital in chains."
+ 
+ GE_Feudal_Vassals.1.t: "A Matter of Baronies"
+ GE_Feudal_Vassals.1.desc: "Time to hand over some baronies to the local nobles"
+ GE_Feudal_Vassals.1.a: "no baronies nibba"
+ GE_Feudal_Vassals.1.b: "Your mom is my barony"
+ GE_Feudal_Vassals.1.c: "fine, have your damn barony"
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ JAYPOP_RATIO_TOOLTIP:0 "Jays"
+ JAYPOPS_TOOLTIP_SIMPLIFIED:0 "Jay's work very hard and produce everything under the sun."
+ 
+ LLEGITIMACY_IRO:0 "#T Horde Unity#!\n"
+ LLEGITIMACY_NO_EFF:0 "No Effects"
+ LLEGITIMACY_CURRENT_EFFECTS:0 "\nEffects from our current Legitimacy:\n"
+ LLEGITIMACY_DRO:0 "#TF Legitimacy is an indication of how well regarded your ruling dynasty is. Positive legitimacy will increase the maximum loyalty of your characters from 50 up to 100. Negative legitimacy will cause all characters in your realm to lose loyalty on a monthly basis.#!"
+ LLEGITIMACY_CHANGES_BY:1 "It changes by $VALUE|+=$ each month due to:\n$WHY$"
+ LLEGITIMACY_NOT_CHANGING:0 "Currently not changing."
+ 
+ tribal_unity_tooltip:0 "#T Horde Unity#!\n \nEffects from our current Horde Unity: \n Discipline #Y [Player.MakeScope.Var('Horde_Unity_Discipline_Throwaway').GetValue|=]% #!  \n Monthly Political Power #Y [Player.MakeScope.Var('Horde_Unity_Political_Throwaway').GetValue|=]% #!\n \n It changes by #Y [Player.MakeScope.Var('Horde_Unity_Total_Modifier_Throwaway').GetValue|=]#! each month due to:\n Total Population: #R [Player.MakeScope.Var('Horde_Unity_Total_Pops_Modifier_Throwaway').GetValue|=]#! \n Happy Tribesmen: #G [Player.MakeScope.Var('Horde_Unity_Tribesmen_Modifier_Throwaway').GetValue|=]#!. \n\n #F Horde unity affects discipline, it goes down the angerier your stupid ooga booga’s are and the bigger they are, if they happy you get more horde unity#!"                                                                                         
+ devotion_tooltip_tooltip:0 "#T Devotion#!\n \nEffects from our current Devotion: \n State Religion Happiness #Y [Player.MakeScope.Var('Devotion_Discipline_Throwaway').GetValue|=]% #!  \n Omen Power #Y [Player.MakeScope.Var('Devotion_Political_Throwaway').GetValue|=]% #!\n \n It changes by #Y [Player.MakeScope.Var('Devotion_Total_Modifier_Throwaway').GetValue|=]#! each month due to:\n Total Population: #R [Player.MakeScope.Var('Devotion_Total_Pops_Modifier_Throwaway').GetValue|=]#! \n Temple Coverage: #G [Player.MakeScope.Var('Devotion_Tribesmen_Modifier_Throwaway').GetValue|=]#!. \n\n #F Devotion affects conversion speed, it is dependent on how many cities with temples you have.#!"                                                                                         
+ hajj_button:0 "go on Hajj"
+ ACTIONS_LIST:0 "Actions"
+
+ bonus_goods_in_capital:0 "Bonus Trade Goods in Capital"
+ 

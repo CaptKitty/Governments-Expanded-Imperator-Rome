@@ -1,0 +1,36 @@
+﻿jaypops = {
+	outout_modifier = {
+		tax_income = 1
+		local_manpower = 1
+		research_points = 1
+		commerce_value = 1
+	}
+	count_modifier = {
+		pop_food_consumption = -1
+	}
+	
+	
+	demotes_to = citizen
+	conquest_demote_chance = 0
+	
+	base_happyness = 0.8
+	
+	color = hsv { 0.3 0.7 0.4 }
+	
+	# Activity Speeds
+	growing_pop = 0.0
+	convert = 0.4
+	assimilate = 0.6
+	promote = 1
+	demote = 1
+	migrant = 0.1
+
+
+	
+	modification_display = {
+		0 = value_manpower
+		1 = value_income
+		2 = value_research
+		3 = value_income
+	}
+}

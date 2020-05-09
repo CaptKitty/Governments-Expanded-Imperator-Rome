@@ -1,0 +1,204 @@
+namespace = piety_events
+
+piety_events.1 = {
+	type = country_event
+	title = "piety_events.1.t"
+	desc = "piety_events.1.desc"
+	hidden = yes
+	picture = city_construction
+
+	trigger = {
+		OR = {
+			religion = islam
+			religion = judaism
+			religion = chalcedonian
+			religion = nestorian
+			religion = miaphysite
+			religion = catholic
+			religion = orthodox
+			religion = hindu
+			religion = jainism
+			religion = buddhism
+			religion = confucian
+			tag = SYR
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = {
+					has_variable = Devotion
+				}
+			}
+			set_variable = {
+				name = Devotion
+				value = 100
+			}
+		}
+		# ROOT = {
+			# add_treasury = {
+				# value = 0
+				# add = Tribal_Unity #10
+			# }
+		# }
+		change_variable = {
+			name = Devotion
+			subtract = Devotion_Unity
+		}
+		clamp_variable = { 
+			name = Devotion
+			min = 0
+			max = 100 
+		}
+		round_variable = {
+			name = Devotion
+			nearest = 0.01
+		}
+		set_variable = {
+			name = Devotion_Total_Modifier_Throwaway
+			value = 0
+		}
+		change_variable = {
+			name = Devotion_Total_Modifier_Throwaway
+			subtract = Devotion_Unity
+		}
+		round_variable = {
+			name = Devotion_Total_Modifier_Throwaway
+			nearest = 0.1
+		}
+		set_variable = {
+			name = Devotion_Tribesmen_Modifier_Throwaway
+			value = 0
+		}
+		change_variable = {
+			name = Devotion_Tribesmen_Modifier_Throwaway
+			subtract = Devotion_Temple_Coverage
+		}
+		round_variable = {
+			name = Devotion_Tribesmen_Modifier_Throwaway
+			nearest = 0.1
+		}
+		set_variable = {
+			name = Devotion_Total_Pops_Modifier_Throwaway
+			value = 0
+		}
+		change_variable = {
+			name = Devotion_Total_Pops_Modifier_Throwaway
+			subtract = Tribal_Unity_Total_Pops
+		}
+		round_variable = {
+			name = Devotion_Total_Pops_Modifier_Throwaway
+			nearest = 0.1
+		}
+		ROOT = {
+			if = {
+				limit = {
+					var:Devotion > 50
+				}
+				change_variable = {
+					name = Devotion
+					subtract = 50
+				}
+				remove_country_modifier = Negative_Devotion_Modifier
+				add_country_modifier_stack = {
+					MOD = Positive_Devotion_Modifier 
+					NUM = var:Devotion 
+					DUR = -1
+				}
+				
+				set_variable = {
+					name = Devotion_Discipline_Throwaway
+					value = -0.5
+				}
+				change_variable = {
+					name = Devotion_Discipline_Throwaway
+					add = var:Devotion
+				}
+				change_variable = {
+					name = Devotion_Discipline_Throwaway
+					multiply = 0.2
+				}
+				round_variable = {
+					name = Devotion_Discipline_Throwaway
+					nearest = 0.1
+				}
+				set_variable = {
+					name = Devotion_Political_Throwaway
+					value = -0.5
+				}
+				change_variable = {
+					name = Devotion_Political_Throwaway
+					add = var:Devotion
+				}
+				change_variable = {
+					name = Devotion_Political_Throwaway
+					multiply = 0.5
+				}
+				round_variable = {
+					name = Devotion_Political_Throwaway
+					nearest = 0.1
+				}
+				change_variable = {
+					name = Devotion
+					add = 50
+				}
+			}
+			if = {
+				limit = {
+					var:Devotion < 50
+				}
+				set_variable = {
+					name = Negative_Devotion_Throwaway
+					value = 50
+				}
+				change_variable = {
+					name = Negative_Devotion_Throwaway
+					subtract = var:Devotion
+				}
+				remove_country_modifier = Positive_Devotion_Modifier
+				add_country_modifier_stack = {
+					MOD = Negative_Devotion_Modifier 
+					NUM = var:Negative_Devotion_Throwaway
+					DUR = -1
+				}
+				set_variable = {
+					name = Devotion_Discipline_Throwaway
+					value = -0.5
+				}
+				change_variable = {
+					name = Devotion_Discipline_Throwaway
+					add = var:Negative_Devotion_Throwaway
+				}
+				change_variable = {
+					name = Devotion_Discipline_Throwaway
+					multiply = -0.2
+				}
+				round_variable = {
+					name = Devotion_Discipline_Throwaway
+					nearest = 0.1
+				}
+				set_variable = {
+					name = Devotion_Political_Throwaway
+					value = -0.5
+				}
+				change_variable = {
+					name = Devotion_Political_Throwaway
+					add = var:Negative_Devotion_Throwaway
+				}
+				change_variable = {
+					name = Devotion_Political_Throwaway
+					multiply = -0.5
+				}
+				round_variable = {
+					name = Devotion_Political_Throwaway
+					nearest = 0.1
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "piety_events.1.a"	
+	}
+}
